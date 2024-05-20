@@ -127,6 +127,7 @@ button{
         width: 100%;
     }
     button{
+        font-size: 18px;
        width: 50%;
     }
     .social-media{
