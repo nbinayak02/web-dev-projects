@@ -1,0 +1,135 @@
+*{
+    margin: 0;
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+
+}
+.body-content{
+    height: 30vh;
+    margin-bottom: 30px;
+    
+}
+.body-text{
+    font-size: 20px;
+    text-align: justify;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+.footer-content{
+    height: 70vh;
+    background-color: #25242a;
+    
+}
+.container{
+    padding: 60px;
+    display: flex
+}
+.contact-div, .useful-link-div, .newsletter-div, .recent-post-div{
+    flex-basis: 200px;
+    margin-top: 50px;
+    flex-grow: 1;
+}
+.title{
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color:#ffb016;
+    margin-bottom: 30px;
+}
+.content-text{
+    font-size: 18px;
+    color: white;
+    text-transform: capitalize;
+}
+.content-text p{
+    margin-bottom: 10px;
+}
+.newsletter-div{
+    display: flex;
+    flex-direction: column;
+}
+.input-fields{
+    display: flex;
+    flex-direction: row;
+}
+.social-media{
+    display: flex;
+    justify-content: space-around;
+}
+.social-media > *{
+    margin-top: 30px;
+    background-color: #ffb016;
+    padding: 8px;
+    border-radius: 5px;
+}
+.form{
+    display: flex;
+    gap: 10px;
+}
+input[type="text"]{
+    height:30px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+button{
+    height: 35px;
+    background-color: #ffb016;
+    font-size: 18px;
+    font-weight: bold;
+    color: #25242a;
+}
+.logo{
+ 
+   margin-left: 10%;
+   
+}
+.logo img{
+    height: 100px;
+    width: 100px;
+}
+.logo span{
+    font-size: 40px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 30px;
+
+}
+@media (max-width:1250px){
+.body-content{
+    height: fit-content;
+}
+.body-text{
+    margin-bottom: 10px;
+}
+.footer-content{
+    height: fit-content;
+}
+.container{
+    flex-direction: column;
+}
+.social-media{
+    justify-content: flex-start;
+    gap: 50px;
+}
+.logo span{
+    font-size: 20px;
+}
+.logo img{
+    height: 50px;
+    width: 50px;
+}
+}
+@media (min-width:300px) and (max-width:399px){
+    input[type="text"]{
+        width: 100%;
+    }
+    button{
+       width: 50%;
+    }
+    .social-media{
+        gap: 30px;
+    }
+}
