@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="main-div">
+
+        <div class="second">
+            <h1>Characters counter</h1>
+            <p>Enter the text below to count the total number of characters.</p>
+        </div>
+        <div class="form-container">
+            <textarea id="input-field" onkeypress="calcChar()" rows="8" cols="65"></textarea>
+            <p>Total characters length: <span id="result">0</span></p> 
+        </div>
+       
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
