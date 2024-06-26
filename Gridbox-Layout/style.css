@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.outer-div {
+    margin: 10px;
+    height: 97vh;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr;
+    /* grid-template-columns: repeat(4, 1fr); */
+    /* grid-template-rows: repeat(4, 1fr); */
+    gap: 10px 10px;
+}
+
+.div {
+    background-color: cyan;
+    text-align: center;
+}
+
+.div p {
+    position: relative;
+    top: 50%;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.nav {
+    grid-area: 1/1/1/5;
+}
+
+.sidebar {
+    grid-area: 2/1/5/1;
+}
+
+.content {
+    grid-area: 2/2/5/5;
+}
+
+.footer {
+    grid-area: 5/1/5/5;
+}
