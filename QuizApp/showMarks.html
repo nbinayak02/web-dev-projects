@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input[type="submit"]{
+            width: 300px;
+            height: 300px;
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+    <p id="result2"></p>
+    <form action="showCorrectAnswer.php" method="POST">
+        <input type="hidden" name="localobject" id="localobject">
+        <input type="submit" onclick="getLocalObject();"  name="submit" value="View full answer">
+    </form>
+   
+
+    <script>
+        function getLocalObject(){
+            var progress = localStorage.getItem("quizProgress");
+            document.getElementById("localobject").value=progress;
+        }
+    </script>
+</body>
+</html>
