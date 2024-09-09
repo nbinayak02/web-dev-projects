@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    /* font-weight: <weight>; */
+    font-style: normal;
+}
+
+.box {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.side-container {
+    width: 300px;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    background-color: #16325B;
+}
+
+.side-container .logo {
+    font-size: 22px;
+    color: #fff;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.side-container .exit a {
+    color: #fff;
+}
+
+.message-container {
+    flex-basis: 100%;
+}
+
+.msg-header {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #fff;
+}
+
+.group-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: relative;
+    left: 30px;
+    background-color: #402e58;
+    border: 2px dashed #fff;
+}
+
+.online {
+    width: 15px;
+    height: 15px;
+    background-color: #00C300;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    border: 2px solid #fff;
+}
+
+.group-name {
+    font-size: 20px;
+    color: #000;
+    font-weight: bold;
+    margin-left: 50px;
+    text-transform: capitalize;
+}
+
+.msg-exchange {
+    width: 100%;
+    height: 80vh;
+    /* background-color: rebeccapurple; */
+    /* display: flex;
+    flex-direction: row; */
+    display: block;
+    overflow-y: scroll;
+}
+
+/* .msg-recieved {
+    width: 50%;
+    border-right: 2px solid #fff;
+}
+
+.msg-sent {
+    width: 50%;
+} */
+
+.sending-area {
+    width: 100%;
+    height: 11vh;
+    /* border-top: 1px solid #9e9b9b; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-box {
+    flex-basis: 80%;
+}
+
+.text-box input[type="text"] {
+    width: 80%;
+    height: 30px;
+    margin-left: 100px;
+    padding: 10px;
+    background-color: #f1f2f6;
+    border: 0;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+input[type="text"]:focus {
+    outline: none;
+}
+
+input[type="submit"] {
+    width: 150px;
+    height: 45px;
+    border-radius: 20px;
+    border: 0px;
+    background-color: #16325B;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+input[type="submit"]:hover {
+    background-color: #1e437a;
+}
+
+.send-btn {
+    flex-basis: 20%;
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-anchor: none;
+}
+
+.received {
+    max-width: 50%;
+    align-self: flex-start;
+    background-color: #1e437a;
+    color: #fff;
+    border-radius: 8px;
+    margin-right: 20px;
+    padding: 10px;
+    position: relative;
+    left: 40px;
+}
+
+.sent {
+    max-width: 50%;
+    align-self: flex-end;
+    background-color: #5a1e7a;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    position: relative;
+    right: 40px;
+}
+
+.sender-profile {
+    color:#000; 
+    align-self: flex-start;
+    position: relative;
+    left: 40px; 
+    margin-top: 20px;
+    margin-bottom: 5px;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+.rdatetime{
+    width: fit-content;
+    font-size: 12px;
+    position: relative;
+    left: 40px;
+    margin-top: 5px;
+    color:#939496;
+}
+.sdatetime{
+    width: fit-content;
+    font-size: 12px;
+    align-self: flex-end;
+    position: relative;
+    right: 40px;
+    margin-top: 5px;
+    color:#939496;
+}
+.changemode img{
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
