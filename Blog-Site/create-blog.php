@@ -16,7 +16,7 @@
             <span class="loader-pro"></span>
         </div>
         <header>Create Post</header>
-        <form id="form">
+        <form id="form" enctype="multipart/form-data">
             <div class="input-field">
                 <label>Title</label>
                 <input type="text" name="title">

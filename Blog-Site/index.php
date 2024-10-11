@@ -9,6 +9,13 @@
 </head>
 
 <body>
+    <!-- php code for accessing data from database -->
+     <?php 
+     require "connection.php";
+     $statement = "SELECT headline,content,author,date,image FROM blogs LIMIT 1;";
+     $result = $connection->query($statement);
+     ?>
+
     <!-- navigation bar -->
     <nav class="nav-bar">
         <div class="logo">Blog Site</div>
@@ -33,64 +40,44 @@
 
         <!-- highlighted content -->
         <div class="highlight">
-            <img src="https://picsum.photos/200">
-            <a href="">
-                <h2>ipsum dolor, sit amet consectetur adipisicing elit. Rerum ipsum numquam fuga.</h2>
-                <div class="info"><span id="author">Author</span> | <span id="upload-time">2 minutes ago</span></div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quae quis sed quasi! Eius repellendus nihil deleniti, corrupti eaque voluptates, iste asperiores expedita nisi enim officia recusandae sapiente doloribus suscipit eum quo nostrum impedit vitae autem! Cupiditate illo amet tempore recusandae quibusdam soluta corporis dolore ex vel? Quo eos quisquam delectus autem voluptatum quasi magni, recusandae, esse cumque soluta consequatur.</p>
+            <?php 
+             if($result->num_rows > 0){
+                $row=$result->fetch_assoc();
+                $filename = $row["image"];
+            ?>
+            <img src="uploads/<?php echo $filename; ?>">
+            <a href="view-post.php?title=<?php echo $row['headline']; ?>">
+                <h2><?php echo $row["headline"]; ?></h2>
+                <div class="info"><span id="author"><?php echo $row["author"]; ?></span> | <span id="upload-time"><?php echo $row["date"]; ?></span></div>
+                <p class="highp"><?php echo $row["content"]; ?></p>
             </a>
+
+            <?php 
+            }
+            ?>
         </div>
 
         <!-- other latest content  -->
         <div class="more-latest">
+            
+            <?php 
+                $statement2 = "select headline, content,image from blogs WHERE id NOT IN (SELECT min(id) from blogs) ORDER BY id DESC limit 6;";
+                $result2 = $connection->query($statement2);
+                if($result2->num_rows>0){
+                    while($row2=$result2->fetch_assoc()){ ?>
             <div class="more-card card1">
-                <img src="https://picsum.photos/200">
-                <a href="">
-                    <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor accusamus necessitatibus unde.
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, maiores facilis magnam
-                        consequuntur quas commodi!</p>
-                </a></div>
-            <div class="more-card card2">
-                <img src="https://picsum.photos/200"><a href="">
-                    <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor accusamus necessitatibus unde.
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, maiores facilis magnam
-                        consequuntur quas commodi!</p>
-                </a></div>
-            <div class="more-card card3">
-                 <img src="https://picsum.photos/200">
-                <a href="">
-                    <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor accusamus necessitatibus unde.
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, maiores facilis magnam
-                        consequuntur quas commodi!</p>
-                </a></div>
-            <div class="more-card card4">
-                 <img src="https://picsum.photos/200">
-                <a href="">
-                    <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor accusamus necessitatibus unde.
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, maiores facilis magnam
-                        consequuntur quas commodi!</p>
-                </a></div>
-            <div class="more-card card5">
-                 <img src="https://picsum.photos/200">
-                <a href="">
-                    <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor accusamus necessitatibus unde.
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, maiores facilis magnam
-                        consequuntur quas commodi!</p>
-                </a></div>
-            <div class="more-card card6">
-                 <img src="https://picsum.photos/200">
-                <a href="">
-                    <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor accusamus necessitatibus unde.
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, maiores facilis magnam
-                        consequuntur quas commodi!</p>
-                </a></div>
+            <img src="uploads/<?php echo $row2["image"]; ?>">
+            <a href="view-post.php?title=<?php echo $row2['headline']; ?>">
+                <h3><?php echo $row2["headline"]; ?></h3>
+                <p><?php echo $row2["content"];?></p>
+            </a>
+            </div>
+                <?php
+                    }
+                }
+                ?>
         </div>
+           
 
 
         <!-- trending content  -->
@@ -98,66 +85,48 @@
             <div class="title">Trending</div>
             <div class="view-all"><a href="">View all</a></div>
         </div>
+
         <div class="highlight">
-            <img src="https://picsum.photos/200">
-            <a href="">
-                <h2>ipsum dolor, sit amet consectetur adipisicing elit. Rerum ipsum numquam fuga.</h2>
-                <div class="info"><span id="author">Author</span> | <span id="upload-time">2 minutes ago</span></div>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam omnis excepturi quidem amet deserunt cumque porro corrupti, error officiis in dignissimos dicta, reprehenderit magni officia? Atque sit id dolores incidunt, accusantium ullam corporis expedita veniam amet quaerat dolorum illum ipsam quibusdam ratione perspiciatis facilis in dicta vitae nulla obcaecati? Molestiae facere sequi omnis quibusdam mollitia inventore delectus, impedit quasi totam!</p>
+            <?php 
+            $statement_trend = "SELECT headline,content,author,date,image FROM blogs WHERE id=14;";
+            $result_trend = $connection->query($statement_trend);
+             if($result_trend->num_rows > 0){
+                $row_trend=$result_trend->fetch_assoc();
+            ?>
+            <img src="uploads/<?php echo $row_trend["image"]; ?>">
+            <a href="view-post.php?title=<?php echo $row_trend['headline']; ?>">
+                <h2><?php echo $row_trend["headline"]; ?></h2>
+                <div class="info"><span id="author"><?php echo $row_trend["author"]; ?></span> | <span id="upload-time"><?php echo $row_trend["date"]; ?></span></div>
+                <p class="highp"><?php echo $row_trend["content"]; ?></p>
             </a>
+
+            <?php 
+            }
+            ?>
         </div>
+
 
         <div class="more-latest">
+            
+            <?php 
+                $statement2 = "select headline, content,image from blogs WHERE id NOT IN (SELECT min(id) from blogs) ORDER BY id DESC limit 6;";
+                $result2 = $connection->query($statement2);
+                if($result2->num_rows>0){
+                    while($row2=$result2->fetch_assoc()){ ?>
             <div class="more-card card1">
-                <img src="https://picsum.photos/200">
-                <a href="">
-                    <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor accusamus necessitatibus unde.
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, maiores facilis magnam
-                        consequuntur quas commodi!</p>
-                </a></div>
-            <div class="more-card card2">
-                <img src="https://picsum.photos/200"><a href="">
-                    <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor accusamus necessitatibus unde.
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, maiores facilis magnam
-                        consequuntur quas commodi!</p>
-                </a></div>
-            <div class="more-card card3">
-                 <img src="https://picsum.photos/200">
-                <a href="">
-                    <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor accusamus necessitatibus unde.
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, maiores facilis magnam
-                        consequuntur quas commodi!</p>
-                </a></div>
-            <div class="more-card card4">
-                 <img src="https://picsum.photos/200">
-                <a href="">
-                    <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor accusamus necessitatibus unde.
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, maiores facilis magnam
-                        consequuntur quas commodi!</p>
-                </a></div>
-            <div class="more-card card5">
-                 <img src="https://picsum.photos/200">
-                <a href="">
-                    <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor accusamus necessitatibus unde.
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, maiores facilis magnam
-                        consequuntur quas commodi!</p>
-                </a></div>
-            <div class="more-card card6">
-                 <img src="https://picsum.photos/200">
-                <a href="">
-                    <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor accusamus necessitatibus unde.
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, maiores facilis magnam
-                        consequuntur quas commodi!</p>
-                </a></div>
+            <img src="uploads/<?php echo $row2["image"]; ?>">
+            <a href="view-post.php?title=<?php echo $row2['headline']; ?>">
+                <h3><?php echo $row2["headline"]; ?></h3>
+                <p><?php echo $row2["content"];?></p>
+            </a>
+            </div>
+                <?php
+                    }
+                }
+                ?>
         </div>
 
-        <!-- topics  -->
+        <!-- topics -->
         <div class="header">
             <div class="title">Topics</div>
             <div class="view-all"><a href="">View all</a></div>
@@ -176,7 +145,6 @@
             <div class="topics"><a href="">Festival</a></div>
         </div>
 
-        <!-- newsletter -->
          <div class="newsletter">
             <div class="header">
                 <div class="title">Subscribe to our newsletter</div>

@@ -1,28 +1,37 @@
 <?php
 include "connection.php";
-$title = $details = $image_data = $author = $date = $category = "";
+$title = $details = $imageFileName = $author = $date = $category = $fileExtension = $tempFileName = $targetPath = "";
+$allowedFileTypes = [];
 
-if($_SERVER["REQUEST_METHOD"]==="POST"){
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $title= $_POST["title"];
-    $details=$_POST["post-details"];
-    // $image=$_POST["image"];
+    $title = $_POST["title"];
+    $details = $_POST["post-details"];
+    $imageFileName = $_FILES["image"]["name"];
     $category = $_POST["category"];
     $author = $_POST["author"];
     $date = $_POST["date"];
 
-    $image_data = file_get_contents($_FILES["image"]["tmp_name"]); //uploaded file is stored in $_FILES array
+    $fileExtension = pathinfo($imageFileName, PATHINFO_EXTENSION); //extension of uploaded file
+    $allowedFileTypes = ["jpg", "jpeg", "png", "gif"];
+    $tempFileName = $_FILES["image"]["tmp_name"];
+    $targetPath = "uploads/" . $imageFileName;
 
-    $statement = $connection->prepare("INSERT INTO blogs (headline,content,category,author,date,image) VALUES (?,?,?,?,?,?);");
-
-    $statement->bind_param("ssssss",$title,$details,$category,$author,$date,$image_data);
-    if($statement->execute()){
-        echo "Post created successfully";
-    } else{
-        echo "Unable to create post";
+    if (in_array($fileExtension, $allowedFileTypes)) {
+        if (move_uploaded_file($tempFileName, $targetPath)) {
+            $statement = $connection->prepare("INSERT INTO blogs (headline,content,category,author,date,image) VALUES (?,?,?,?,?,?);");
+            $statement->bind_param("ssssss", $title, $details, $category, $author, $date, $imageFileName);
+            if ($statement->execute()) {
+                echo "Post created successfully";
+            } else {
+                echo "Unable to create post";
+            }
+        } else {
+            echo "Unable to upload file";
+        }
+    } else {
+        echo "Invalid file type";
     }
-} else{
+} else {
     echo "Invalid request";
 }
-
-?>
