@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 * {
     margin: 0;
-    font-family: "Playfair Display", serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .nav-bar {
@@ -99,8 +99,13 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+.highp{
+    height: 110px;
+    overflow: hidden;
+}
 .more-latest{
     margin-top: 1rem;
+    /* max-width: 200px; */
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -109,6 +114,7 @@
     margin-bottom:1rem;
 }
 .more-card{
+    height: 210px;
     border: 1px solid #2B7A78;
     border-radius: 1rem;
     padding:0.8rem;
@@ -117,10 +123,14 @@
     gap:2rem;
 }
 .more-card img{
-    border-radius:1rem ;
+    width: 400px;
+    height: 12rem;
+    border-radius:1rem;
 }
 .more-card p{
     margin-top: 1rem;
+    height: 110px;
+    overflow: hidden;
 }
 .topics-container{
     margin-top: 1rem;
@@ -186,7 +196,7 @@ height: 2rem;
     border: none;
 }
 
-  @media only screen and (max-width: 1100px) {
+  /* @media only screen and (max-width: 1100px) {
     body{
         background-color: red;
     }
@@ -200,4 +210,4 @@ height: 2rem;
     .header .title{
         font-size: 1.5rem;
     }
-  }
+  } */
